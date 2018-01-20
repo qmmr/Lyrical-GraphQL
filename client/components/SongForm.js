@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { hashHistory } from 'react-router'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -30,8 +31,9 @@ class SongForm extends Component {
         variables: { title: this.state.title },
       })
       .then(({ data }) => {
-        console.log('data', data, this.setState)
-        this.setState({ title: '' })
+        console.log('data', data)
+        // this.setState({ title: '' })
+        hashHistory.push('/')
       })
       .catch(error => console.error(error))
   }
