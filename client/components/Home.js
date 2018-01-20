@@ -13,7 +13,7 @@ const Home = props => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/song/add">Add song</Link>
+            <Link to="/songs/new">Add new song</Link>
           </li>
         </ul>
       </nav>
