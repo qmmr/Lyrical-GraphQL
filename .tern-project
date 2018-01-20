@@ -1,0 +1,15 @@
+{
+  "libs": [
+    "browser",
+    "chai",
+    "ecma6"
+  ],
+  "loadEagerly": [
+    "index.js"
+  ],
+  "plugins": {
+    "webpack": {},
+    "node": {},
+    "es_modules": {}
+  }
+}
