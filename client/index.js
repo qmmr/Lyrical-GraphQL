@@ -10,16 +10,16 @@ import SongList from './components/SongList'
 
 const client = new ApolloClient({})
 const App = () => {
-	return (
-		<ApolloProvider client={client}>
-			<Router history={hashHistory}>
-				<Route path="/" component={Home}>
-					<IndexRoute component={SongList} />
-					<Route path="song/add" component={SongForm} />
-				</Route>
-			</Router>
-		</ApolloProvider>
-	)
+  return (
+    <ApolloProvider client={client}>
+      <Router history={hashHistory}>
+        <Route path="/" component={Home}>
+          <IndexRoute component={SongList} />
+          <Route path="song/add" component={SongForm} />
+        </Route>
+      </Router>
+    </ApolloProvider>
+  )
 }
 
 ReactDOM.render(<App />, document.querySelector('#root'))
