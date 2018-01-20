@@ -8,7 +8,7 @@ class SongList extends Component {
 		return (
 			<div>
 				<h2>SongList</h2>
-				{loading ? <div>Loading...</div> : <ul>{songs.map(({title}) => <li key={title}>{title}</li>)}</ul>}
+				{loading ? <div>Loading...</div> : <ul>{songs.map(({ id, title }) => <li key={id}>{title}</li>)}</ul>}
 			</div>
 		)
 	}
@@ -17,6 +17,7 @@ class SongList extends Component {
 const query = gql`
 	{
 		songs {
+			id
 			title
 		}
 	}
