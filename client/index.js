@@ -9,8 +9,7 @@ import SongForm from './components/SongForm'
 import SongList from './components/SongList'
 
 const client = new ApolloClient({})
-
-const Root = () => {
+const App = () => {
 	return (
 		<ApolloProvider client={client}>
 			<Router history={hashHistory}>
@@ -23,4 +22,4 @@ const Root = () => {
 	)
 }
 
-ReactDOM.render(<Root />, document.querySelector('#root'))
+ReactDOM.render(<App />, document.querySelector('#root'))
