@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import LyricForm from './LyricForm'
+import LyricList from './LyricList'
 import React from 'react'
 import { graphql } from 'react-apollo'
 import { query } from '../queries/song'
@@ -15,13 +16,7 @@ export const SongInfo = ({ data, params }) => {
     <section>
       <h1>Song Info</h1>
       <h2>Title: {song.title}</h2>
-      <ul>
-        {song.lyrics.map(lyric => (
-          <li key={lyric.id}>
-            <p>{lyric.content}</p>
-          </li>
-        ))}
-      </ul>
+      {song.lyrics.length ? <LyricList lyrics={song.lyrics} /> : null}
       <LyricForm id={params.id} />
     </section>
   )
