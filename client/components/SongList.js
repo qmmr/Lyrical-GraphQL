@@ -1,15 +1,16 @@
+/* eslint-disable react/no-multi-comp, react/prop-types */
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
 
-import { query } from '../queries/getSongs'
 import { mutation } from '../mutations/deleteSong'
+import { query } from '../queries/getSongs'
 
-const Song = ({ id, mutate, title }) => {
+const Song = ({ id, mutate, refetch, title }) => {
   const handleClick = event => {
     event.preventDefault()
     mutate({
-      variables: { id },
-    }).then(data => console.log(data))
+      variables: { id }
+    }).then(() => refetch())
   }
 
   return (
@@ -32,7 +33,6 @@ const Song = ({ id, mutate, title }) => {
   )
 }
 
-/* eslint-disable react/no-multi-comp */
 class SongList extends Component {
   render() {
     const { loading, songs } = this.props.data
@@ -43,7 +43,9 @@ class SongList extends Component {
           <div>Loading...</div>
         ) : (
           <ul style={{ display: 'flex', flexDirection: 'column' }}>
-            {songs.map(props => <Song key={props.id} {...props} mutate={this.props.mutate} />)}
+            {songs.map(props => (
+              <Song key={props.id} {...props} mutate={this.props.mutate} refetch={this.props.data.refetch} />
+            ))}
           </ul>
         )}
       </div>
