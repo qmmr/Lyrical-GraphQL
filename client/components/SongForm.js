@@ -1,17 +1,17 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react'
-import { hashHistory } from 'react-router'
-import { graphql } from 'react-apollo'
 
-import { query } from '../queries/getSongs'
+import { graphql } from 'react-apollo'
+import { hashHistory } from 'react-router'
 import { mutation } from '../mutations/addSong'
-import { songsQuery } from './SongList'
+import { query } from '../queries/songs'
 
 class SongForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      title: '',
+      title: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -20,7 +20,7 @@ class SongForm extends Component {
 
   handleChange(event) {
     event.persist()
-    this.setState(state => {
+    this.setState(() => {
       return { title: event.target.value }
     })
   }
@@ -32,9 +32,9 @@ class SongForm extends Component {
     this.props
       .mutate({
         variables: { title: this.state.title },
-        refetchQueries: [{ query }],
+        refetchQueries: [ { query } ]
       })
-      .then(({ data }) => hashHistory.push('/'))
+      .then(() => hashHistory.push('/'))
       .catch(error => console.error(error))
   }
 
