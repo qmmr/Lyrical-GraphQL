@@ -22,16 +22,17 @@ const Song = ({ id, mutate, title }) => {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'center'
       }}>
       <p>{title}</p>
-      <span onClick={handleClick}>
-        <i className="material-icons">delete</i>
-      </span>
+      <i onClick={handleClick} className="material-icons" style={{ cursor: 'pointer' }}>
+        delete
+      </i>
     </li>
   )
 }
 
+/* eslint-disable react/no-multi-comp */
 class SongList extends Component {
   render() {
     const { loading, songs } = this.props.data
