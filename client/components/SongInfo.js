@@ -3,9 +3,9 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import { query } from '../queries/song'
 
-export const SongInfo = props => {
-  console.log('props', props)
-  const { data: { loading, song } } = props
+export const SongInfo = ({ data }) => {
+  const { loading, song } = data
+
   return (
     <section>
       <h1>Song Info</h1>

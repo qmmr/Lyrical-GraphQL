@@ -27,7 +27,7 @@ const Song = ({ id, mutate, refetch, title }) => {
         alignItems: 'center'
       }}>
       <p>
-        <Link to={`/songs/info/${id}`}>{title}</Link>
+        <Link to={`/songs/${id}`}>{title}</Link>
       </p>
       <i onClick={handleClick} className="material-icons" style={{ cursor: 'pointer' }}>
         delete
