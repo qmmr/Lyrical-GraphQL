@@ -2,8 +2,9 @@
 import React, { Component } from 'react'
 import { compose, graphql } from 'react-apollo'
 
+import { Link } from 'react-router'
 import { mutation } from '../mutations/deleteSong'
-import { query } from '../queries/getSongs'
+import { query } from '../queries/songs'
 
 const Song = ({ id, mutate, refetch, title }) => {
   const handleClick = event => {
@@ -25,7 +26,9 @@ const Song = ({ id, mutate, refetch, title }) => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-      <p>{title}</p>
+      <p>
+        <Link to={`/songs/info/${id}`}>{title}</Link>
+      </p>
       <i onClick={handleClick} className="material-icons" style={{ cursor: 'pointer' }}>
         delete
       </i>
