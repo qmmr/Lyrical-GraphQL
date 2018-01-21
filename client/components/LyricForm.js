@@ -33,6 +33,8 @@ class LyricForm extends Component {
       })
       .then(data => console.log('data', data))
       .catch(error => console.error('error', error))
+
+    this.setState({ content: '' })
   }
 
   render() {

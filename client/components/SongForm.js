@@ -36,6 +36,8 @@ class SongForm extends Component {
       })
       .then(() => hashHistory.push('/'))
       .catch(error => console.error(error))
+
+    this.setState(() => ({ title: '' }))
   }
 
   render() {
