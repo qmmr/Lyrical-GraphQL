@@ -9,6 +9,8 @@ import { query } from '../queries/songs'
 const Song = ({ id, mutate, refetch, title }) => {
   const handleClick = event => {
     event.preventDefault()
+    // INFO: Update songs by refetching
+    // https://www.apollographql.com/docs/react/basics/queries.html#graphql-query-data-refetch
     mutate({
       variables: { id }
     }).then(() => refetch())
@@ -18,13 +20,13 @@ const Song = ({ id, mutate, refetch, title }) => {
     <li
       key={id}
       style={{
-        padding: '0 1em',
+        alignItems: 'center',
         border: '1px solid #444',
-        marginBottom: '1em',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        marginBottom: '1em',
+        padding: '0 1em'
       }}>
       <p>
         <Link to={`/songs/${id}`}>{title}</Link>

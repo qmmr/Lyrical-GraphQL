@@ -20,15 +20,14 @@ class SongForm extends Component {
 
   handleChange(event) {
     event.persist()
-    this.setState(() => {
-      return { title: event.target.value }
-    })
+    this.setState(() => ({ title: event.target.value }))
   }
 
   handleSubmit(event) {
-    event.persist()
     event.preventDefault()
 
+    // INFO: Mutate with refetchQueries
+    // https://www.apollographql.com/docs/react/basics/mutations.html#graphql-mutation-options-refetchQueries
     this.props
       .mutate({
         variables: { title: this.state.title },

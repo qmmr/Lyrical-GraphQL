@@ -9,6 +9,8 @@ import SongForm from './components/SongForm'
 import SongInfo from './components/SongInfo'
 import SongList from './components/SongList'
 
+// INFO: Normalization with dataIdFromObject
+// https://www.apollographql.com/docs/react/features/cache-updates.html#normalization
 const client = new ApolloClient({
   dataIdFromObject: o => o.id
 })

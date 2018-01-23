@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 
-const models = require('./models')
+require('./models')
 const expressGraphQL = require('express-graphql')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -29,7 +29,7 @@ app.use(
   '/graphql',
   expressGraphQL({
     schema,
-    graphiql: true,
+    graphiql: true
   })
 )
 

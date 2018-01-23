@@ -27,11 +27,12 @@ class LyricForm extends Component {
     event.persist()
     event.preventDefault()
 
+    // INFO: No need for refetch because of data normalization with dataIdFromObject
     this.props
       .mutate({
         variables: { content: this.state.content, songId: this.props.id }
       })
-      .then(data => console.log('data', data))
+      .then(({ data }) => console.log('addLyricToSong', data.addLyricToSong))
       .catch(error => console.error('error', error))
 
     this.setState({ content: '' })

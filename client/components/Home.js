@@ -1,5 +1,6 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
 import { Link } from 'react-router'
+import React from 'react'
 
 const Home = props => {
   return (

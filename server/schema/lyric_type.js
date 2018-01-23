@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const graphql = require('graphql')
-const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLInt, GraphQLString } = graphql
+const { GraphQLObjectType, GraphQLID, GraphQLInt, GraphQLString } = graphql
 const Lyric = mongoose.model('lyric')
 
 const LyricType = new GraphQLObjectType({
@@ -14,13 +14,10 @@ const LyricType = new GraphQLObjectType({
       resolve(parentValue) {
         return Lyric.findById(parentValue)
           .populate('song')
-          .then(lyric => {
-            console.log(lyric)
-            return lyric.song
-          })
-      },
-    },
-  }),
+          .then(lyric => lyric.song)
+      }
+    }
+  })
 })
 
 module.exports = LyricType

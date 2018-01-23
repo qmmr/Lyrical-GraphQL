@@ -7,6 +7,8 @@ import { mutation } from '../mutations/likeLyric'
 export class LyricList extends Component {
   handleClick({ id, likes }) {
     event.preventDefault()
+    // INFO: Mutate with optimisticResponse
+    // https://www.apollographql.com/docs/react/features/optimistic-ui.html
     this.props
       .mutate({
         variables: { id },
@@ -19,17 +21,15 @@ export class LyricList extends Component {
           }
         }
       })
-      .then(resp => console.log('resp', resp.data))
-    console.log('thumb_up lyric id', id)
+      .then(({ data }) => console.log('data', data))
+      .catch(error => console.error('error', error))
   }
 
   render() {
-    const { lyrics } = this.props
-
     return (
       <div>
         <ul className="collection">
-          {lyrics.map(lyric => (
+          {this.props.lyrics.map(lyric => (
             <li
               key={lyric.id}
               className="collection-item"
